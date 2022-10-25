@@ -67,6 +67,9 @@ const Navba = () => {
       <Link to="login">
         Login
       </Link>
+      <Link to="Faq">
+        FAQ
+      </Link>
     </Navbar.Collapse>
   </Navbar>
   

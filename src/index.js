@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Router } from 'react-router-dom';
 import { BrowserRouter as Router} from "react-router-dom";
+import { ToastContainer } from 'react-bootstrap';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
+    <ToastContainer position='top-center' />
+    {/* <Router> */}
+
     <App />
-    </Router>
+    {/* </Router> */}
   </React.StrictMode>
 );
 
