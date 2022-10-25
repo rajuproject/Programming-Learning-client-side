@@ -5,8 +5,6 @@ const Home = () => {
         <div className='body'>
             this is home page 
            
-            {/* <Navbar></Navbar> */}
-            athis is nav 
         </div>
     );
 };

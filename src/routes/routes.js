@@ -14,14 +14,14 @@ const router = createBrowserRouter([
       element: <Main />,
       errorElement: <ErrorPage />,
       children: [
-        // {
-        //   path: '/',
-        //   element: <Home />,
-        // },
-        // {
-        //   path: '/home',
-        //   element: <Home />,
-        // },
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/home',
+          element: <Home />,
+        },
         {
           path: '/login',
           element: <Login />,
@@ -30,8 +30,9 @@ const router = createBrowserRouter([
           path: '/register',
           element: <Register />,
         },
+
         {
-          path: '/wallet',
+          path: '/booking',
           element: (
             <PrivateRoute>
               <Booking />
