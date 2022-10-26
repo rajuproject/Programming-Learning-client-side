@@ -4,20 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Router } from 'react-router-dom';
-import { BrowserRouter as Router} from "react-router-dom";
-import { ToastContainer } from 'react-bootstrap';
 
 
+
+import AuthProvider from './contexts/UserContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToastContainer position='top-center' />
-    {/* <Router> */}
 
+  <AuthProvider>
     <App />
-    {/* </Router> */}
+    </AuthProvider>
+ 
   </React.StrictMode>
 );
 
