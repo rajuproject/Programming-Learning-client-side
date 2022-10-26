@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom"
-import Booking from "../components/Booking"
+
 import ErrorPage from "../components/ErrorPage"
 import Home from "../components/Home"
 import Login from "../components/Login"
-import Profile from "../components/Profile"
+import PremiumAccess from "../components/PremiumAccess"
+import Profile from "../components/profile"
+
 import Register from "../components/Register"
 import Main from "../layout/Main"
 import PrivateRoute from "./PrivateRoute"
@@ -32,10 +34,10 @@ const router = createBrowserRouter([
         },
 
         {
-          path: '/booking',
+          path: '/PremiumAccess',
           element: (
             <PrivateRoute>
-              <Booking />
+              <PremiumAccess />
             </PrivateRoute>
           ),
         },

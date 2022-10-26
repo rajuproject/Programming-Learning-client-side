@@ -1,12 +1,20 @@
 
-import { Avatar,Dropdown, Navbar } from 'flowbite-react';
-// import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-// import {AuthContext} from '../contexts/UserContext'
+import  {Avatar,Dropdown, Navbar}  from 'flowbite-react';
+import  useContext  from 'react';
+
+import  {Link}  from 'react-router-dom';
+import {AuthContext}  from '../contexts/UserContext';
+
 
 
 const Navba = () => {
-  //  const {user, logout} = useContext(AuthContext)
+   const {user, logout} = useContext(AuthContext)
+
+   const handleLogout = () => {
+    logout()
+      .then(toast.warning('User logged out!'))
+      .catch(error => console.log(error))
+
   return (
     
     <Navbar className='container bg-sky-500'
@@ -23,6 +31,7 @@ const Navba = () => {
         Javascript Learn
       </span>
     </Link>
+    {user?.email ? (
     <div className="flex md:order-2">
       <Dropdown
         arrowIcon={false}
@@ -38,22 +47,15 @@ const Navba = () => {
           </span>
         </Dropdown.Header>
         <Dropdown.Item>
-          Dashboard
+          <Link to="premiumAccess">PremiumAccess</Link>
         </Dropdown.Item>
         <Dropdown.Item>
-          Settings
-        </Dropdown.Item>
-        <Dropdown.Item>
-          Earnings
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item>
-
-          <button>Sign out</button>
+          <button onClick={handleLogout}>Sign out</button>
         </Dropdown.Item>
       </Dropdown>
       <Navbar.Toggle />
     </div>
+    ):(
     <Navbar.Collapse>
       <Link to="home">
         Home
@@ -64,16 +66,19 @@ const Navba = () => {
       <Link to="blog">
         Blog
       </Link>
-      <Link to="login">
-        Login
-      </Link>
       <Link to="Faq">
         FAQ
       </Link>
+      <Link to="login">
+        Login
+      </Link>
+    
+ 
     </Navbar.Collapse>
+    )}
   </Navbar>
   
   );
 };
 
-export default Navba;
+export default Navba
