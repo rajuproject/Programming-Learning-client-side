@@ -22,6 +22,10 @@ import { createBrowserRouter } from "react-router-dom";
 import Category from '../components/Categories/Category';
 import News from '../components/News/News';
 import TermsAndConditions from '../components/TermsAndCondition/TermsAndConditions.js'
+import PremiumAccess from '../components/PremiumAccess';
+import Blog from '../Blog/Blog';
+import Faq from '../Faq/Faq';
+import Courses from '../Courses/Courses';
 
 export const routes = createBrowserRouter([
     {
@@ -30,18 +34,18 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>,
-                loader: () => fetch('https://dragon-news-server-seven.vercel.app/news')
+                element: <Home></Home>
+                // loader: () => fetch('https://book-server-mu.vercel.app/news')
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({params}) => fetch(`https://dragon-news-server-seven.vercel.app/category/${params.id}`)
+                loader: ({params}) => fetch(`https://book-server-mu.vercel.app/category/${params.id}`)
             },
             {
                 path: '/news/:id',
                 element: <PrivateRoute><News></News></PrivateRoute>,
-                loader: ({params}) => fetch(`https://dragon-news-server-seven.vercel.app/news/${params.id}`)
+                loader: ({params}) => fetch(`https://book-server-mu.vercel.app/news/${params.id}`)
             },
             {
                 path: '/login',
@@ -52,12 +56,27 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: '/terms',
-                element: <TermsAndConditions></TermsAndConditions>
+                path:'/courses',
+                element:<Courses></Courses>,
+                loader: () => fetch('https://book-server-mu.vercel.app/news')
             },
+            {
+                path:'/Faq',
+                element: <Faq></Faq>
+            },
+            {
+                path:'/blog',
+                element: <Blog></Blog>
+            },
+
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: '/premium',
+                element: <PrivateRoute><PremiumAccess></PremiumAccess></PrivateRoute>,
+                loader: ({params}) => fetch(`https://book-server-mu.vercel.app/news/${params.id}`)
             }
         ]
     }

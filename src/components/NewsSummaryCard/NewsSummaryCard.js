@@ -1,14 +1,20 @@
 import React from 'react';
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
+
+const ref = React.createRef();
 
 const NewsSummaryCard = ({ news }) => {
     const { _id, title, author, details, image_url, rating, total_view } = news;
     
     return (
-        <Card className="mb-5">
+  <div className="ml-5 h-100" ref={ref}>
+          <Card className="mb-5">
             <Card.Header className='d-flex justify-content-between align-items-center'>
                 <div className='d-flex'>
                     <Image
@@ -45,11 +51,24 @@ const NewsSummaryCard = ({ news }) => {
                     <span>{rating?.number}</span>
                 </div>
                 <div>
+                    <Link to='/premium' className='bg-blue-300'>Get Premium</Link>
+                </div>
+                <div>
+                <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button onClick={toPdf}>Download</button>}
+      </Pdf>
+                    {/* <Button>Download</Button> */}
+                </div>
+                <div>
+                <Link to={`/news/${_id}`}>Details</Link>
+                </div>
+                <div>
                     <FaEye className='me-2'></FaEye>
                     <span>{total_view}</span>
                 </div>
             </Card.Footer>
         </Card>
+  </div>
     );
 };
 

@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
-import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar, NavDropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
+// import Button from 'react-bootstrap/Button';
+// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+// import Tooltip from 'react-bootstrap/Tooltip';
+
+
+
 // import { Image } from 'react-bootstrap';
 // import Container from 'react-bootstrap/Container';
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaAccessibleIcon} from 'react-icons/fa';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 // import { Link } from 'react-router-dom';
 // import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
@@ -26,23 +32,14 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand><Link to='/'>Dragon News</Link></Navbar.Brand>
+                <Link to='/' className='font-bold no-underline'> <FaAccessibleIcon className='w-50 fw-bold'></FaAccessibleIcon> Programming Learning</Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to='/home' >All News</Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                        
+                         <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/courses">Courses</Link>
+                         <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/faq">Faq</Link>
+                         <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/blog">Blog</Link>
                     </Nav>
                     <Nav>
                         <>
@@ -54,8 +51,8 @@ const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
+                                        <Link to='/login'className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1'>Login</Link>
+                                        <Link to='/register' className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 mr-5'>Register</Link>
                                     </>
                             }
 
@@ -64,12 +61,13 @@ const Header = () => {
                         <Link to="/profile">
                             {user?.photoURL ?
                                 <Image
-                                    style={{ height: '30px' }}
+                                    style={{ height: '40px' }}
                                     roundedCircle
                                     src={user?.photoURL}>
                                 </Image>
                                 : <FaUser></FaUser>
                             }
+
                         </Link>
                     </Nav>
                     <div className='d-lg-none'>

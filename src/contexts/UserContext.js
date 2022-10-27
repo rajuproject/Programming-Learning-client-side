@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from './firebase/firebase.init';
 
 
@@ -8,19 +8,41 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
+    // const authInfoo = createContext()
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-    const providerLogin = (provider) => {
+    const googleProvider = new GoogleAuthProvider()
+    // google login 
+
+    const githubProvider  = new GithubAuthProvider()
+
+    const githubSignIn = () =>{
         setLoading(true);
-        return signInWithPopup(auth, provider);
+        return signInWithPopup(auth, githubProvider);
     }
+
+    const signInWithGoogle = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    }
+
+    // create user 
 
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    // update name 
+    const updateName = name => {
+        console.log(name)
+        setLoading(true)
+        return updateProfile(auth.currentUser, { displayName: name })
+      }
+
+    //   Login with password 
+    
     const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
@@ -30,9 +52,19 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile);
     }
 
+    // email verify 
     const verifyEmail = () =>{
+        setLoading(true)
         return sendEmailVerification(auth.currentUser);
     }
+
+      //7. Forget Password
+  const resetPassword = email => {
+    setLoading(true)
+    return sendPasswordResetEmail(auth, email)
+  }
+
+    // Log out 
 
     const logOut = () => {
         setLoading(true);
@@ -41,11 +73,11 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('inside auth state change', currentUser);
+           
 
-            if(currentUser === null || currentUser.emailVerified){
+            // if(currentUser === null || currentUser.emailVerified){
                 setUser(currentUser);
-            }
+            
             setLoading(false);
         });
 
@@ -59,12 +91,15 @@ const AuthProvider = ({ children }) => {
         user, 
         loading, 
         setLoading,
-        providerLogin, 
+        signInWithGoogle, 
         logOut, 
         updateUserProfile,
         verifyEmail,
         createUser, 
-        signIn 
+        signIn,
+        resetPassword,
+        updateName,
+        githubSignIn 
     };
 
     return (
