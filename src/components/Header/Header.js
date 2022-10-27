@@ -2,25 +2,15 @@ import React, { useContext } from 'react';
 import { Button, Container, Image, Nav, Navbar, NavDropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
-// import Button from 'react-bootstrap/Button';
-// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-// import Tooltip from 'react-bootstrap/Tooltip';
 
-
-
-// import { Image } from 'react-bootstrap';
-// import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaUser, FaAccessibleIcon} from 'react-icons/fa';
+import { FaUser, FaAccessibleIcon } from 'react-icons/fa';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
-// import { Link } from 'react-router-dom';
-// import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-// import LeftSideNav from '../LeftSideNav/LeftSideNav';
-// import Button from 'react-bootstrap/Button';
+import { useState } from 'react'
+import { Switch } from '@headlessui/react'
+
 
 const Header = () => {
+    const [enabled, setEnabled] = useState(false)
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
@@ -36,10 +26,23 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        
-                         <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/courses">Courses</Link>
-                         <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/faq">Faq</Link>
-                         <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/blog">Blog</Link>
+
+                        <Link className='text-6xl ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/courses">Courses</Link>
+                        <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/faq">Faq</Link>
+                        <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/blog">Blog</Link>
+                        <Switch
+                            checked={enabled}
+                            onChange={setEnabled}
+                            className={`${enabled ? 'bg-teal-900' : 'bg-teal-700'}
+          relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                        >
+                            <span className="sr-only">Use setting</span>
+                            <span
+                                aria-hidden="true"
+                                className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
+            pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+                            />
+                        </Switch>
                     </Nav>
                     <Nav>
                         <>
@@ -51,14 +54,16 @@ const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1'>Login</Link>
+                                        <Link to='/login' className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1'>Login</Link>
                                         <Link to='/register' className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 mr-5'>Register</Link>
                                     </>
                             }
 
 
                         </>
-                        <Link to="/profile">
+                        <Link to="/profile" aria-label='Home'
+                            title={user?.displayName}>
+
                             {user?.photoURL ?
                                 <Image
                                     style={{ height: '40px' }}
