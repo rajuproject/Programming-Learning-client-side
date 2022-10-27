@@ -68,3 +68,31 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+-------------------------------------------------------------------------
+                    Feature and details
+
+
+Website Name: Learn Programming
+
+Git link: https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-rajuproject
+
+Git link: https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-rajuproject
+
+Server live link: 
+
+Features
+*** All Progaramming language course sell 
+*** High Speed website
+*** Premium Access
+*** Log in page and register and way
+*** Server Always fast, no down any time..bcz created with react.js
+
+
+
+
+
+---------------------------------------------------------
