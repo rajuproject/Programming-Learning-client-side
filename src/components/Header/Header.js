@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Container, Image, Nav, Navbar, NavDropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 
@@ -12,6 +12,8 @@ import { Switch } from '@headlessui/react'
 const Header = () => {
     const [enabled, setEnabled] = useState(false)
     const { user, logOut } = useContext(AuthContext);
+
+    // logout 
 
     const handleLogOut = () => {
         logOut()
@@ -27,9 +29,9 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
 
-                        <Link className='text-6xl ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/courses">Courses</Link>
-                        <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/faq">Faq</Link>
-                        <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ' to="/blog">Blog</Link>
+                        <Link className=' ml-5 no-underline bg-indigo-500 rounded-lg text-white p-1 ml-6 ' to="/courses">Courses</Link>
+                        <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-2 ml-6 ' to="/faq">Faq</Link>
+                        <Link className='ml-5 no-underline bg-indigo-500 rounded-lg text-white p-2 ml-6 mr-8 ' to="/blog">Blog</Link>
                         <Switch
                             checked={enabled}
                             onChange={setEnabled}

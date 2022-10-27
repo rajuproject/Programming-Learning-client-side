@@ -14,7 +14,7 @@ const Home = () => {
         <Card.Text>
           High Quality All Courses
         </Card.Text>
-        <Button className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'><Link to='/courses'> Buy Courses</Link> </Button>
+        <Link  className='no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' to='/courses'> Buy Courses</Link> 
       </Card.Body>
      
     </Card>

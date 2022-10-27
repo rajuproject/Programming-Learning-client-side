@@ -24,6 +24,7 @@ const PremiumAccess = () => {
           <div className='flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left'>
             <h1 className='text-5xl font-bold leading-none sm:text-6xl'>
               Balance: 5000 tk
+              <p>Id:7868014522</p>
             </h1>
             <p className='mt-6 mb-8 text-lg sm:mb-12'>
              Congress for premium access

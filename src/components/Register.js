@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth'
+
 import React, { useContext } from 'react'
 
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -13,7 +13,7 @@ const Register = () => {
   const from = location.state?.from?.pathname || '/'
   const { createUser,githubSignIn, updateName, signInWithGoogle } =
     useContext(AuthContext)
-//  console.log(updateName)
+
     
   // Signup using Email & Pass
   const handleSubmit = event => {
@@ -22,32 +22,20 @@ const Register = () => {
     const name = event.target.name.value
     const email = event.target.email.value
     const password = event.target.password.value
-    // console.log(name)
 
-    //1. Create Account
+    // Create User 
+
     createUser(email, password)
-    // console.log(name)
+
+  
       .then(result => {
         console.log(result.user)
         console.log(name)
-        // setError('')
-        // from.reset()
-// console.log(name)
-        //2. Update Name
+
         updateName(name)
           .then(() => {
             toast.success('Name Updated')
-            
-
-            //3. Email verification
-            // verifyEmail()
-            //   .then(() => {
-            //     toast.success('Please check your email for verification link')
-            //     navigate(from, { replace: true })
-            //   })
-            //   .catch(error => {
-            //     toast.error(error.message)
-            //   })
+          
           })
           .catch(error => {
             toast.error(error.message)
@@ -56,6 +44,8 @@ const Register = () => {
       .catch(error => console.log(error))
   }
   
+
+  // gitHub logIn 
 
   const githubSubmit =() =>{
     githubSignIn().then(result =>{

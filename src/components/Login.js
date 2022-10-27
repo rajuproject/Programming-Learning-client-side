@@ -5,15 +5,16 @@ import { toast } from 'react-toastify'
 import { AuthContext } from '../contexts/UserContext'
 
 const Login = () => {
-// const [error, setError] = useState('')
+
   const [userEmail, setUserEmail] = useState('')
-  // const [showPass, setShowPass] = useState(false)
+
+
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
  
 
-  // const googleProvider = new GoogleAuthProvider()
+// Import auth 
 
   const { signIn, githubSignIn, resetPassword, signInWithGoogle } = useContext(AuthContext)
 
@@ -22,6 +23,8 @@ const Login = () => {
 
     const email = event.target.email.value
     const password = event.target.password.value
+
+    // sign in with email 
 
     signIn(email, password)
       .then(result => {
@@ -60,15 +63,10 @@ const githubSubmit =() =>{
     })
     .catch(error => console.error(error))
   }
-//   const handleGoogleSignIn = () => {
-//     providerLogin(googleProvider)
-//         .then(result => {
-//             const user = result.user;
-//             console.log(user);
-//         })
-//         .catch(error => console.error(error))
-// }
-  //Reset Pass
+
+
+// password reset 
+
   const handleReset = () => {
     resetPassword(userEmail)
       .then(() => {

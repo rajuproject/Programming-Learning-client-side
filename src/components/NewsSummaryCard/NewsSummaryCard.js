@@ -44,22 +44,22 @@ const NewsSummaryCard = ({ news }) => {
                         }
                     </Card.Text>
                 </Card.Body>
-                <Card.Footer className="d-flex justify-content-between">
+                <Card.Footer className="d grid grid-cols-2 justify-center items-center">
 
-                    <div>
-                        <Link to='/premium' className='bg-blue-300'>Get Premium</Link>
+                    <div className='mb-4'>
+                        <Link to='/premium'  className='no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded'>Get Premium</Link>
                     </div>
-                    <div>
+                    <div className='mb-4'>
                         <Pdf targetRef={ref} filename="code-example.pdf">
-                            {({ toPdf }) => <button className='' onClick={toPdf}>Download</button>}
+                            {({ toPdf }) => <button  className='no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={toPdf}>Download</button>}
                         </Pdf>
 
                     </div>
                     <div>
-                        <Link to="/courses">All Courses</Link>
+                        <Link to="/courses"  className='no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded'>All Courses</Link>
                     </div>
                     <div>
-                        <Link to={`/news/${_id}`}>Details</Link>
+                        <Link to={`/news/${_id}`}  className='no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded'>Details</Link>
                     </div>
 
                 </Card.Footer>

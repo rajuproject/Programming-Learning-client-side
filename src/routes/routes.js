@@ -5,14 +5,9 @@ import PrivateRoute from '../routes/PrivateRoute'
 import Login from '../components/Login';
 import Register from '../components/Register'
 import Profile from '../components/profile'
-
-
-
-
 import { createBrowserRouter } from "react-router-dom";
 import Category from '../components/Categories/Category';
 import News from '../components/News/News';
-
 import PremiumAccess from '../components/PremiumAccess';
 import Blog from '../Blog/Blog';
 import Faq from '../Faq/Faq';
